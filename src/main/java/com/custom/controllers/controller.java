@@ -22,7 +22,8 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 //@CrossOrigin("http://localhost:4200")
-@CrossOrigin("https://arpana13.github.io")
+@CrossOrigin("https://www.influnexus.com")
+
 public class controller {
 
 	private ResponseEntity responseEntity;
