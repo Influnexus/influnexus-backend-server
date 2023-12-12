@@ -21,8 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
-// @CrossOrigin("https://www.influnexus.com")
+// @CrossOrigin("http://localhost:4200")
+@CrossOrigin("https://www.influnexus.com")
 
 public class controller {
 
