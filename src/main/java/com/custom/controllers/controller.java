@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.custom.Service.ApiKeyService;
 import com.custom.Service.CustomerService;
 import com.custom.Service.GoogleService;
 import com.custom.enties.*;
@@ -42,6 +43,9 @@ public class controller {
 
 	@Autowired
 	GoogleService googleService;
+
+	@Autowired
+	ApiKeyService apiKeyService;
 
 
 	@Autowired
@@ -222,14 +226,18 @@ public class controller {
 		return new ResponseEntity<>(customer1, HttpStatus.CREATED);
 	}
 
-	//	http://localhost:1001/googleLogin
+	@PostMapping("/addKey")
+	public ResponseEntity<?> saveKey(@RequestBody ApiKey apiKey){
+		ApiKey apiKey1 = apiKeyService.addKey(apiKey);
+		return new ResponseEntity<>(apiKey1, HttpStatus.CREATED);
+	}
 
-//	@PostMapping("/googleLogin")
-//	public ResponseEntity<?> googleLogin(@RequestBody GoogleLogin googleLogin) {
-//
-//		GoogleLogin addUser = googleService.addUser(googleLogin);
-//		return new ResponseEntity<>(addUser, HttpStatus.CREATED);
-//	}
+	@GetMapping("/apiKeys/{keyId}")
+	public ResponseEntity<?> getSpecificKeyById(@PathVariable int keyId){
+
+			return new ResponseEntity<>(apiKeyService.getSpecificKeyById(keyId), HttpStatus.OK);
+
+	}
 
 	@PostMapping("/googleLogin")
 	public GoogleLogin googleLoginCallback(@RequestBody GoogleLogin userCredential) {
